@@ -1,3 +1,16 @@
 table{
     border: 1px solid orange;
+    display: inline-block;
+}
+
+a.btn{
+    padding: 20px 30px;
+    background-color: orange;
+}
+
+input{
+    display: inline-block;
+}
+input[type="submit"]{
+    display: inline-block;
 }
