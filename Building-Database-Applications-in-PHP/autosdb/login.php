@@ -9,25 +9,25 @@ if ( isset($_POST['cancel'] ) ) {
 
 $failure  = false;
 
-if (isset($_POST['email']) && isset($_POST['pws'])){
+if (isset($_POST['who']) && isset($_POST['pass'])){
 
-    if(strlen($_POST['email']) < 1 || strlen($_POST['pws']) < 1){
+    if(strlen($_POST['who']) < 1 || strlen($_POST['pass']) < 1){
         $failure = "Email and password are required";
 
     }else{
 
-        $email = $_POST['email'];
-        $password = ($_POST['pws']);
+        $email = $_POST['who'];
+        $password = ($_POST['pass']);
 
 
         if( password_verify($password,$stored_hash) && filter_var($email, FILTER_VALIDATE_EMAIL)){
-            header("Location: autos.php?name=".urlencode($_POST['email']));
-            error_log("Login success ".$_POST['email']);
+            header("Location: autos.php?name=".urlencode($_POST['who']));
+            error_log("Login success ".$_POST['who']);
         }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
             $failure = "Email must have an at-sign (@)";
         }else{
             $failure= "Incorrect password";
-            error_log("Login fail ".$_POST['email']." $password");
+            error_log("Login fail ".$_POST['who']." $password");
         }
 
 
@@ -52,7 +52,7 @@ if (isset($_POST['email']) && isset($_POST['pws'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="./img/favicon.ico">
-    <title>Login</title>
+    <title>Login Renzo Barrios 2eee6c2a</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -66,12 +66,12 @@ if ( $failure !== false ) {
     <div class="container">
         <form method="post">
             <label for="username-email">Email</label>
-            <input class="input-bar" type="text" id="username-email" name="email" >
+            <input class="input-bar" type="text" id="username-email" name="who">
             <br>
-            <label for="pws">Password</label>
-            <input class="input-bar" type="text" id="pws" name="pws" min="3">
+            <label for="pass">Password</label>
+            <input class="input-bar" type="text" id="pass" name="pass" min="3">
             <br>
-            <input class="btn btn-login" type="submit" value="send" name="sended">
+            <input class="btn btn-login" type="submit" value="Log In" name="sended">
             <input class="btn btn-login" type="submit" value="cancel" name="cancel">
         </form>
     </div>

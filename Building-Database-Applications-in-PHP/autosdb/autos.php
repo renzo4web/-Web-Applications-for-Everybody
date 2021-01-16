@@ -1,6 +1,7 @@
 <?php
 require_once "pdo.php";
-$failure  = false;
+$notification  = false;
+$showCars = false;
 $name = "";
 if(!isset($_GET['name'])){
     die("Name parameter missing");
@@ -10,13 +11,13 @@ if(!isset($_GET['name'])){
     $name = $_GET['name'];
     if(isset($_POST['make']) && isset($_POST['year']) && isset($_POST['mileage']) ){
         if( strlen($_POST['make']) < 1  ){
-            $failure = "Make is required";
+            $notification = "Make is required";
 
 
         }else{
 
             if( !is_numeric($_POST['year']) || !is_numeric($_POST['mileage']) ){
-                $failure = "Mileage and year must be numeric";
+                $notification = "Mileage and year must be numeric";
             }else{
                 $make = $_POST['make'];
                 $year = $_POST['year'];
@@ -28,7 +29,7 @@ if(!isset($_GET['name'])){
                         ':year'=> $year,
                         ':mileage'=>$mileage
                 ));
-                    $failure = "Record inserted";
+                $notification = "Record inserted";
 
             }
         }
@@ -40,7 +41,7 @@ if(!isset($_GET['name'])){
 
 }
 
-
+$showCars =true;
 
 ?>
 
@@ -51,17 +52,20 @@ if(!isset($_GET['name'])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tracking Autos</title>
+    <title>Tracking Autos Renzo Barrios 2eee6c2a</title>
     <link rel="icon" href="./img/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php
-if ( $failure !== false ) {
-    echo('<h2 class="warning">'.htmlentities($failure)."</h2>\n");
-}
-?>
-            <h1>Tracking Autos for :<?php echo(' <span class="accent-color">'.htmlentities($name)."</span>\n"); ?></h1>
+
+            <h1>Tracking Autos for :<?php echo('<span class="accent-color">'.htmlentities($name)."</span>\n"); ?></h1>
+            <?php
+            if ( $notification !== false && $notification != "Record inserted" ) {
+                echo('<h2 class="warning">'.htmlentities($notification)."</h2>\n");
+            }else if ($notification == "Record inserted" ){
+                echo("<h2 class='success'>Record inserted</h2>");
+            }
+            ?>
         <div class="container">
             <form method="post">
                 <label for="make-car">Make</label>
@@ -76,6 +80,18 @@ if ( $failure !== false ) {
                 <input class="btn" type="submit" name="0" value="Add">
                 <input class="btn btn-logout" type="submit" value="logout" name="logout">
             </form>
+            <?php
+                if($showCars !== false){
+                    echo "<h3 class='accent-color'>Automobiles</h3>";
+                    $sqlShow = "SELECT * FROM autos ";
+                    $stmtShow = $pdo->query($sqlShow);
+                    while ($row = $stmtShow->fetch(PDO::FETCH_ASSOC)){
+                        $mke = htmlentities($row['make']);
+                        echo "<table><tr><td>{$mke}</td><td>{$row['year']}</td><td>{$row['mileage']}</td></tr> </table>";
+                    }
+
+                }
+            ?>
         </div>
 
 </body>
