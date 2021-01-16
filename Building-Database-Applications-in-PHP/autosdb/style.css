@@ -1,0 +1,71 @@
+*{
+    font-family: sans-serif;
+}
+a{
+    text-underline: none;
+}
+.accent-color{
+    color: orange;
+}
+h1{
+    text-align: center;
+    margin: 65px;
+    margin-bottom: 30px;
+}
+em{
+    text-align: center;
+    display: block;
+
+}
+.btn{
+    display: inline-block;
+    font-size: 25px;
+    background-color: orange;
+    color: black;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 5px ;
+    text-decoration: none;
+    margin-top: 60px;
+}
+.btn:hover , .btn:focus{
+    background-color: #ffc800;
+}
+
+.container{
+    width: 600px;
+    margin: 0 auto;
+}
+p{
+    margin-top: 40px;
+}
+
+.btn-login{
+    font-size: 15px;
+    padding: 10px 20px;
+}
+
+.btn-logout{
+    background-color: bisque;
+}
+
+form{
+    padding: 2%;
+    font-size: 20px;
+}
+label{
+    font-weight: bold;
+    background-color: orange;
+    padding: 8px 35px;
+    border-radius: 0px 10px 0px 10px;
+}
+
+.input-bar {
+    margin: 10px auto;
+    font-size: 20px;
+    outline: orange;
+    padding: 8px 3px;
+}
+.warning{
+    color: red;
+}
