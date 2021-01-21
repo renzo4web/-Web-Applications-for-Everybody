@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "pdo.php";
 $notification  = false;
 $showCars = false;
@@ -7,21 +8,24 @@ if(!isset($_GET['name'])){
     die("Name parameter missing");
 }else if (isset($_POST['logout'])){
     header("Location: login.php");
+    return;
 }else{
     $name = $_GET['name'];
     if(isset($_POST['make']) && isset($_POST['year']) && isset($_POST['mileage']) ){
         if( strlen($_POST['make']) < 1  ){
             $notification = "Make is required";
 
-
         }else{
 
             if( !is_numeric($_POST['year']) || !is_numeric($_POST['mileage']) ){
                 $notification = "Mileage and year must be numeric";
             }else{
+
+
                 $make = $_POST['make'];
                 $year = $_POST['year'];
                 $mileage = $_POST['mileage'];
+
                 $sql_insert = "INSERT INTO `autos` (`make`, `year`, `mileage`) VALUES (:make,:year,:mileage )";
                 $stmt = $pdo->prepare($sql_insert);
                 $stmt->execute(array(

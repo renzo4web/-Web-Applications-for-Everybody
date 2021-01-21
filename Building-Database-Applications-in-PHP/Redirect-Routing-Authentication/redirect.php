@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-if (isset($_POST['where'])) {
-    $where = $_POST['where'];
+$where = filter_input(INPUT_POST,"where",FILTER_VALIDATE_INT);
+
+if (isset($_POST['where']) && $where) {
+
     if ($where === "1") {
         header("Location: https://netbeans.apache.org/");
         return;
