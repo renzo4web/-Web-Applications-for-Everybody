@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,10 +15,18 @@
 
 <h1>Central Hub</h1>
 <?php
-//Grab the data from $_SESSION
-//Print Succes MESAGGE
-
-//Check if login When refresh the page
+    //Flash Success Msg
+        if(isset($_SESSION['success'])){
+            echo "<p style='color:green'>{$_SESSION['success']}</p>";
+            unset($_SESSION['success']);
+        }
+        // Check is the user is registered
+        if(!isset($_SESSION['account'])){
+            echo "<p>Please <a href='login.php'>Log in</a>to start</p>";
+        }else{
+            echo "<p>This is where the magic happen!</p>";
+            echo "<p>Please <a href='logout.php'>Log out</a>when you are done.</p>";
+        }
 ?>
 
 
