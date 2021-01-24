@@ -35,8 +35,9 @@ session_start();
             while ($row = $stmtShow->fetch(PDO::FETCH_ASSOC)) {
                 if ($row){
                 $mke = htmlentities($row['make']);
-                echo "<table><tr><td>{$mke}</td><td>{$row['year']}</td><td>{$row['mileage']}</td><td><a href='delete.php'>Delete
-</a></td><td><a href='edit.php'>Edit
+                $getEdit = "autos_id=".$row['autos_id'];
+                echo "<table><tr><td>{$mke}</td><td>{$row['year']}</td><td>{$row['mileage']}</td><td><a href='delete.php?{$getEdit}'>Delete
+</a></td><td><a href='edit.php?{$getEdit}'>Edit
 </a></td></tr> </table>";}else{
                     echo "No rows found";
                 }
