@@ -34,7 +34,7 @@ if (isset($_POST['delete'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Deleting 09ad6b97</title>
 </head>
 <body>
     <?php  echo $_GET['autos_id']  ?>

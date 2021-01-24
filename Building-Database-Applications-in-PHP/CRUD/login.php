@@ -42,7 +42,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Renzo</title>
+    <title>Renzo Barrios 09ad6b97</title>
 </head>
 <body>
 
@@ -66,7 +66,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
         <br/>
         <label for="pws">Password</label>
         <input class="input-bar" type="text" id="pws" name="pass" value="php123"><br/>
-        <input class="input-bar" type="submit" value="login">
+        <input class="input-bar" type="submit" value="Log In">
     </form>
     <a class="btn btn-logout" href="index.php">Cancel</a>
 </div>
